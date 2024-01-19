@@ -2,4 +2,4 @@ This application developed by using HTML,CSS ,BootStrap and Django framework wit
 This application contain following functions :
 1. User can create account and login
 2. User can add product to cart and place the order
-3. 
+
