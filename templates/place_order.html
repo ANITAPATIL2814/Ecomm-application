@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'main' %}
+<!--cart section start-->
+<div class="row ms-4 m-4"><!--ms-4 m-4-->
+    <div class="col-md-9 "> <!--customer detail start-->
+        <h5 class="bg-danger-subtle p-3">Customer details</h5>
+        {% for x in products %}
+        {% if forloop.counter == 1 %}
+            <p><strong>Name:</strong>&nbsp;&nbsp;&nbsp;{{x.uid.username}}</p>
+            <p><strong>Mobile:</strong>&nbsp;&nbsp;&nbsp;999999999</p>
+            <p><strong>Email:</strong>&nbsp;&nbsp;&nbsp;{{x.uid.email}}</p>
+        {% endif %}
+        {% endfor %}
+        <hr>
+        <h5 class="bg-danger-subtle p-3">Product details</h5>
+        
+        {% for x in products %}
+        
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ x.pid.pimage.url}}" alt="" width="100%">
+            </div>
+            <div class="col-md-8">
+                <p><strong>Product Name: </strong>&nbsp;&nbsp;{{x.pid.name}}</p>
+                <p><strong>Price: </strong>&nbsp;&nbsp;Rs. {{x.pid.price}}</p>
+                <!--to print category-->
+                    {% if x.cat == 1 %}
+                        <p><strong>Category: </strong>&nbsp;&nbsp;Mobile</p>
+                    {% elif x.cat == 2 %}
+                        <p><strong>Category: </strong>&nbsp;&nbsp;Shoes</p>
+                    {% else %}
+                        <p><strong>Category: </strong>&nbsp;&nbsp;Clothes</p>
+                    {% endif %}
+                <p><strong>Product description: </strong>&nbsp;&nbsp;{{x.pid.pdetails}}</p> 
+                <a href="/remove/{{x.id}}"><button class="btn btn-danger">Remove</button></a>
+            </div>
+            <hr>
+        </div>
+        {% endfor %}
+    </div><!--customer detail  and product end-->
+    <div class="col-md-3"><!--total amout start-->
+        <h5 class="bg-danger-subtle p-3">Total Amount</h5>
+        <p><strong>Total {{ n }}:</strong>&nbsp;&nbsp; {{ total }}</p>
+        <hr>
+        <p><strong>Total Amount:</strong>&nbsp;&nbsp;{{ total }}</p>
+        <a href="/makepayment"><button class="btn btn-danger">Make Payment</button></a>
+    </div><!--total amout end-->
+</div>
+
+<!--cart section end-->
+{% endblock 'main'%}

@@ -1,0 +1,44 @@
+<!-- Templates extending: here we extends base class include base we are including header and footer.html files-->
+{% extends "base.html" %} 
+{% load static %}
+{% block 'main' %}
+<!--main start-->
+<div class="row mt-4">
+    {% for x in products %}
+    <div class="col-md-6">
+        <img src="{{x.pimage.url}}" alt="" width="100%" height="100%" >
+    </div>
+    <div class="col-md-6 ">
+        <p><strong>Product Name: </strong>&nbsp;&nbsp;{{x.name}}</p>
+        <p><strong>Price: </strong>&nbsp;&nbsp;{{x.price}}</p>
+        <!--to print category-->
+        {% if x.cat == 1 %}
+            <p><strong>Category: </strong>&nbsp;&nbsp;Mobile</p>
+        {% elif x.cat == 2 %}
+            <p><strong>Category: </strong>&nbsp;&nbsp;Shoes</p>
+        {% else %}
+            <p><strong>Category: </strong>&nbsp;&nbsp;Clothes</p>
+        {% endif %}
+        <p><strong>Product description: </strong>&nbsp;&nbsp;{{x.pdetails}}</p> 
+        <a href="/addtocart/{{x.id}}"><button class="btn btn-danger">Add to cart</button></a>
+        <a href="/viewcart"><button class="btn btn-danger">View cart</button></a>
+        <a href="/home"><button class="btn btn-danger">Shop more</button></a>
+        <br>
+        <!--for printing success on product_details.html-->
+        {% if success %}
+        <div class="alert alert-success mt-4">
+            {{success}}
+        </div>
+        {% endif %}
+        <!--to print msg-->
+        {% if msg %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>
+<!--main end-->
+{% endblock 'main'%}

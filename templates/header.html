@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">   
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"> 
+</head>
+<body>
+    <div class="container-xxl"><!--Header Start-->
+        <div class="row  ">
+            <div class="col-12 shadow mx-auto  ">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/home">Estore</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <!--if user authenticated then only logout show -->
+                                {% if user.is_authenticated %} <!---by default functionality -->
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="/logout">Logout</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="/home">home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/pdetails">Product</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/viewcart">Cart</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact">contact</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login/">Login</a>
+                                </li>
+                              {% endif %}   
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div><!--Header End -->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+</body>
+</html>
